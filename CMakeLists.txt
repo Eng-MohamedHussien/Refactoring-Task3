@@ -15,6 +15,6 @@ FetchContent_MakeAvailable(doctest)
 
 add_library(${CMAKE_PROJECT_NAME} SHARED ChessFigure.cpp)
 
-add_executable(test main.cpp)
+add_executable(test tests.cpp)
 target_link_libraries(test doctest::doctest ${CMAKE_PROJECT_NAME})
 target_include_directories(test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

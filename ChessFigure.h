@@ -5,6 +5,10 @@ class ChessFigure {
 public:
   ChessFigure(const std::string &coord);
   virtual void Move(const std::string &nextCoord) = 0;
+  static const char StartRowIndex;
+  static const char EndRowIndex;
+  static const char StartColumnIndex;
+  static const char EndColumnIndex;
 
 protected:
   std::string currentCoord;

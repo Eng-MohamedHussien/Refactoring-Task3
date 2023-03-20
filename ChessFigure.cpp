@@ -5,11 +5,18 @@
 
 using namespace std;
 
+const char ChessFigure::StartRowIndex = 'A';
+const char ChessFigure::EndRowIndex = 'H';
+const char ChessFigure::StartColumnIndex = '1';
+const char ChessFigure::EndColumnIndex = '8';
+
 ChessFigure::ChessFigure(const std::string &coord) : currentCoord(coord) {}
 
 bool inRangeMove(const std::string &nextCoord) {
-  return nextCoord[0] >= 'A' && nextCoord[0] <= 'H' && nextCoord[1] >= '1' &&
-         nextCoord[1] <= '8';
+  return nextCoord[0] >= ChessFigure::StartRowIndex &&
+         nextCoord[0] <= ChessFigure::EndRowIndex &&
+         nextCoord[1] >= ChessFigure::StartColumnIndex &&
+         nextCoord[1] <= ChessFigure::EndColumnIndex;
 }
 
 bool isValidRookMove(const std::string &currentCoord,
@@ -61,37 +68,61 @@ bool isValidPawnMove(const std::string &currentCoord,
 }
 
 void Rook::Move(const std::string &nextCoord) {
-  assert(inRangeMove(nextCoord));
-  assert(isValidRookMove(currentCoord, nextCoord));
+  if (!inRangeMove(nextCoord)) {
+    throw "Out of range Move !!!";
+  }
+  if (!isValidRookMove(currentCoord, nextCoord)) {
+    throw "Invalid Move !!!";
+  }
   currentCoord = nextCoord;
 }
 
 void Knight::Move(const std::string &nextCoord) {
-  assert(inRangeMove(nextCoord));
-  assert(isValidKnightMove(currentCoord, nextCoord));
+  if (!inRangeMove(nextCoord)) {
+    throw "Out of range Move !!!";
+  }
+  if (!isValidKnightMove(currentCoord, nextCoord)) {
+    throw "Invalid Move !!!";
+  }
   currentCoord = nextCoord;
 }
 
 void Bishop::Move(const std::string &nextCoord) {
-  assert(inRangeMove(nextCoord));
-  assert(isValidBishopMove(currentCoord, nextCoord));
+  if (!inRangeMove(nextCoord)) {
+    throw "Out of range Move !!!";
+  }
+  if (!isValidBishopMove(currentCoord, nextCoord)) {
+    throw "Invalid Move !!!";
+  }
   currentCoord = nextCoord;
 }
 
 void Pawn::Move(const std::string &nextCoord) {
-  assert(inRangeMove(nextCoord));
-  assert(isValidPawnMove(currentCoord, nextCoord));
+  if (!inRangeMove(nextCoord)) {
+    throw "Out of range Move !!!";
+  }
+  if (!isValidPawnMove(currentCoord, nextCoord)) {
+    throw "Invalid Move !!!";
+  }
   currentCoord = nextCoord;
 }
 
 void King::Move(const std::string &nextCoord) {
-  assert(inRangeMove(nextCoord));
-  assert(isValidKingMove(currentCoord, nextCoord));
+  if (!inRangeMove(nextCoord)) {
+    throw "Out of range Move !!!";
+  }
+  if (!isValidKingMove(currentCoord, nextCoord)) {
+    throw "Invalid Move !!!";
+  }
   currentCoord = nextCoord;
 }
 
 void Queen::Move(const std::string &nextCoord) {
-  assert(inRangeMove(nextCoord));
-  assert(isValidQueenMove(currentCoord, nextCoord));
+  if (!inRangeMove(nextCoord)) {
+    throw "Out of range Move !!!";
+  }
+  if (!isValidQueenMove(currentCoord, nextCoord)) {
+    throw "Invalid Move !!!";
+  }
   currentCoord = nextCoord;
 }
