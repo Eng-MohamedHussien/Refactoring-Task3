@@ -52,8 +52,10 @@ bool isValidKingMove(const std::string &currentCoord,
 bool isValidQueenMove(const std::string &currentCoord,
                       const std::string &nextCoord) {
 
-  return isValidRookMove(currentCoord, nextCoord) ||
-         isValidBishopMove(currentCoord, nextCoord);
+  bool rookMove = isValidRookMove(currentCoord, nextCoord);
+  bool bishopMove = isValidBishopMove(currentCoord, nextCoord);
+
+  return (rookMove && !bishopMove) || (!rookMove && bishopMove);
 }
 
 // Pawn moves 1 spuare straight ahead or 2 squares straight ahead at the
